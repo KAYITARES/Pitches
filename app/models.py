@@ -1,44 +1,56 @@
-class Movie:
-    '''
-    Movie class to define Movie Objects
-    '''
+from . import db
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
+from . import login_manager
 
-    def __init__(self,id,title,overview,poster,vote_average,vote_count):
-        self.id =id
-        self.title = title
-        self.overview = overview
-        self.poster = "https://image.tmdb.org/t/p/w500/" + poster
-        self.vote_average = vote_average
-        self.vote_count = vote_count
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class User(UserMixin, db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255),index = True)
+    email = db.Column(db.String(255),unique = True,index = True)
+    # comment_id = db.Column(db.Integer,db.ForeignKey('comments.id'))
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    pitches = db.relationship('Pitche',backref = 'user',lazy="dynamic")
+    comments = db.relationship('Comment',backref = 'usery',lazy="dynamic")
+    pass_secure = db.Column(db.String(255))
+    
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attribute')
+
+    @password.setter
+    def password(self, password):
+        self.pass_secure = generate_password_hash(password)
 
 
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
 
-class Review:
+    def __repr__(self):
+        return f'User {self.username}'
 
-    all_reviews = []
+class Pitche(db.Model):
+    __tablename__= 'pitches' 
+    id = db.Column(db.Integer,primary_key = True)
+    content = db.Column(db.String(255))
+    category = db.Column(db.String(255))
+    users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    comments = db.relationship('Comment',backref = 'pitche',lazy="dynamic")
+    def __repr__(self):
+        return f'User {self.content}'
 
-    def __init__(self,movie_id,title,imageurl,review):
-        self.movie_id = movie_id
-        self.title = title
-        self.imageurl = imageurl
-        self.review = review
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
-
-    def save_review(self):
-        Review.all_reviews.append(self)
-
-
-    @classmethod
-    def clear_reviews(cls):
-        Review.all_reviews.clear()
-
-    @classmethod
-    def get_reviews(cls,id):
-
-        response = []
-
-        for review in cls.all_reviews:
-            if review.movie_id == id:
-                response.append(review)
-
-        return response
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String(255))
+    users = db.relationship('User',backref = 'role',lazy="dynamic")
+    users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+    def __repr__(self):
+        return f'User {self.comment}'
