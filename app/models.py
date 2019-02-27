@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pitches = db.relationship('Pitche',backref = 'user',lazy="dynamic")
-    comments = db.relationship('Comment',backref = 'usery',lazy="dynamic")
+    comments = db.relationship('Comment',backref = 'user',lazy="dynamic")
     pass_secure = db.Column(db.String(255))
     
     @property
@@ -49,7 +49,6 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String(255))
-    users = db.relationship('User',backref = 'role',lazy="dynamic")
     users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     def __repr__(self):
