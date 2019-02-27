@@ -1,6 +1,20 @@
 #container {
   background-color: blue;
 }
+
 .title {
   color: blueviolet;
 }
+body{
+  background-image:url(https://images.pexels.com/photos/1001780/pexels-photo-1001780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)
+}
+h1{
+  text-align:center;
+  color:white;
+}
+.pitchform{
+  background-color:gray;
+  width:80%;
+  padding: 10%;
+  margin-top:15%;
+} 
