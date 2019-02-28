@@ -1,5 +1,4 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
 {% block styles%}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
@@ -7,5 +6,23 @@
 
 {% block content %}
     <h1>WELCOME TO PITCHES WEBSITE</h><br>
-      <P>click on button to create a pitch <a href={{ url_for('main.create_pitches') }}><button>Create Pitch</button></a></P> 
+      <P>click on button to create a pitch <a href={{ url_for('main.create_pitches') }}><button>Create Pitch</button></a></P>
+      {% for kigali in all_pitches %}
+      <div class="container">         
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>{{kigali.content}}</td>
+              
+              <th>{{kigali.category}}</th>
+              
+              <a href="/comment/new/{{kigali.id}}"><button>comment</button></a>  
+            </tr>
+          </thead>
+         
+        </table>
+      </div>
+       <p></p>  
+      {% endfor %}
 {% endblock%}
+

@@ -19,10 +19,10 @@ class UpdateProfile(FlaskForm):
 class PitchForm(FlaskForm):
     
     # my_category = StringField('Category', validators=[Required()])
-    my_category = SelectField('Category', choices=[('Business','Business'),('Academic','Academic'),('Political','Political'),('Technology','Technology'),('Health','Health')],validators=[Required()])
-    pitch = TextAreaField('Your Pitch', validators=[Required()])
+    category = SelectField('Category', choices=[('Business','Business'),('Academic','Academic'),('Political','Political'),('Technology','Technology'),('Health','Health')],validators=[Required()])
+    content= TextAreaField('Your Pitch', validators=[Required()])
     submit = SubmitField('Submit!')
 
-# class CommentForm(FlaskForm):
-#     comment = TextAreaField('Comment', validators=[Required()])
-#     submit = SubmitField('Post Comment')
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Comment', validators=[Required()])
+    submit = SubmitField('Post Comment')
