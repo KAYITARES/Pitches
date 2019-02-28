@@ -1,7 +1,10 @@
 {% extends 'base.html'%}
-
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 {% block content %}
-<div class="container">
+<div class="container" id="prof">
 {% if user == current_user %}
     <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
 {% endif %}
