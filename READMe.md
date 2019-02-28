@@ -54,6 +54,11 @@ SQLAlchemy errors, automatic sign out has a short time span
 - JavaScript
 - Heroku
 - Postgresql
+## Support and contact details
+Contact me on cyntkayitare@gmail.com for any comments, reviews or advice.
+
+## License
+**[MIT](http://choosealisence.com/license.com/licenses/mit)**Copyright (c) **kayitare cynthia**
 
 
 
