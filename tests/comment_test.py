@@ -1,6 +1,6 @@
 
 import unittest
-from app.models import Pitch, User, Comment
+from ..models import Pitch, User, Comment
 from flask_login import current_user
 from app import db
 
@@ -8,8 +8,8 @@ class TestPitch(unittest.TestCase):
 
     def setUp(self):
         self.user_joe = User(username='joe',password='password',email='abc@defg.com')
-        self.new_pitch = Pitch(pitch_content = "This is my pitch", pitch_category='Business',user=self.user_joe)
-        self.new_comment = Comment(comment_content = "This is my comment", pitch=self.new_pitch, user=self.user_joe)
+        self.new_pitch = Pitch(content = "This is my pitch", category='Business',user=self.user_joe)
+        self.new_comment = Comment(comment= "This is my comment", pitch=self.new_pitch, user=self.user_joe)
     
     def tearDown(self):
         db.session.delete(self)
@@ -22,6 +22,6 @@ class TestPitch(unittest.TestCase):
 
 
     def test_check_instance_variables(self):
-        self.assertEquals(self.new_comment.comment_content,"This is my comment")
+        self.assertEquals(self.new_comment.comment,"This is my comment")
         self.assertEquals(self.new_comment.pitch,self.new_pitch)
         self.assertEquals(self.new_comment.user,self.user_joe)
