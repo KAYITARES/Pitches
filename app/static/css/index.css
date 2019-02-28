@@ -19,5 +19,6 @@ h1{
   margin-top:15%;
 } 
 table{
-  background-color:black;
+  background-color:gray;
+  color:black;
 }
