@@ -47,6 +47,13 @@ Open the browser on http://localhost:5000/
 
 ## Known bugs
 SQLAlchemy errors, automatic sign out has a short time span
+## Technologies used
+- Python 3.6
+- HTML
+- Bootstrap 4
+- JavaScript
+- Heroku
+- Postgresql
 
 
 
