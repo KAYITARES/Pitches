@@ -24,3 +24,6 @@ Set-up and Installation
 Prerequiites
 - Python 3.6
 - Ubuntu software
+## Clone the Repo
+Run the following command on the terminal: git clone https://github.com/KAYITARES/Pitches.git && cd Pitches
+
