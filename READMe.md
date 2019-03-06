@@ -14,9 +14,13 @@ A user can select any of the categories from the navbar to view the pitches on t
 Other users can give feedback to the pitch posts by commenting, liking or disliking the pitch.
 
 ## Specifications
-Get the specs here
+* Signing up:	Fill in the form in the signup page	to Redirects to the login page
+* Signing in:	Fill in the form in the signin page to 	Redirects to the home page
+* Posting a pitch	In the home page, enter your pitch in text, select a category in the drop down menu and hit Pitch It Button!to	Reloads the page with the pitch as the newest pitch
+* Viewing user profile:	Click on the users name to	Redirects the user to the clicked user profile
+* Uploading a photo:	Click on the choose file button and choose file	The page will be refreshed with the profile photo updated
 
-Set-up and Installation
+## Set-up and Installation
 Prerequiites
 - Python 3.6
 - Ubuntu software
